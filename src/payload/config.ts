@@ -4,11 +4,13 @@ import { webpackBundler } from '@payloadcms/bundler-webpack'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { slateEditor } from '@payloadcms/richtext-slate'
 import { Users } from './collections/users'
+import { Generations } from './collections/generations'
 import { Greeting } from './globals/greeting'
+import { Media } from './collections/media'
 
 const config = buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL!,
-  collections: [Users],
+  collections: [Users, Generations, Media],
   globals: [Greeting],
   admin: {
     bundler: webpackBundler(),

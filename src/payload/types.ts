@@ -9,6 +9,8 @@
 export interface Config {
   collections: {
     users: User;
+    generations: Generation;
+    media: Media;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -28,6 +30,26 @@ export interface User {
   loginAttempts?: number;
   lockUntil?: string;
   password: string;
+}
+export interface Generation {
+  id: string;
+  title: string;
+  prompt: string;
+  image: string | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+export interface Media {
+  id: string;
+  alt: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string;
+  filename?: string;
+  mimeType?: string;
+  filesize?: number;
+  width?: number;
+  height?: number;
 }
 export interface PayloadPreference {
   id: string;
