@@ -1,0 +1,48 @@
+{
+  "name": "next-payload",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env PAYLOAD_CONFIG_PATH=src/payload/config.ts nodemon",
+    "build": "run-s build:*",
+    "build:payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload/config.ts payload build",
+    "build:server": "tsc --project tsconfig.server.json",
+    "build:next": "cross-env PAYLOAD_CONFIG_PATH=dist/payload/config.js NEXT_BUILD=true node dist/server.js",
+    "build:files": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png}\" dist/",
+    "start": "cross-env PAYLOAD_CONFIG_PATH=dist/payload/config.js NODE_ENV=production node dist/server.js",
+    "format": "prettier --write .",
+    "lint": "eslint src",
+    "generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload/config.ts payload generate:types"
+  },
+  "dependencies": {
+    "@payloadcms/bundler-webpack": "^1.0.4",
+    "@payloadcms/db-mongodb": "^1.0.4",
+    "@payloadcms/richtext-slate": "^1.0.7",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.1",
+    "next": "14.0.0",
+    "payload": "^2.0.13",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.20",
+    "@types/express-fileupload": "^1.4.3",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10",
+    "copyfiles": "^2.4.1",
+    "cross-env": "^7.0.3",
+    "dotenv-flow": "^4.0.0",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.0",
+    "nodemon": "^3.0.1",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8",
+    "prettier": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.6",
+    "tailwindcss": "^3",
+    "typescript": "^5"
+  }
+}
